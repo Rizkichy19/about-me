@@ -1,0 +1,655 @@
+/* Import Google Fonts (pastikan sudah ada di HTML juga) */
+/* font-family: 'Rajdhani', sans-serif; */
+/* font-family: 'Poppins', sans-serif; */
+
+/* ---- Global Styles & Variables (tetap sama) ---- */
+:root {
+    --bg-dark: #1a1a2e; /* Dark Deep Blue/Black */
+    --accent-teal: #00ADB5;   /* Electric Teal/Cyan */
+    --accent-magenta: #EE00FF; /* Vibrant Magenta/Fuchsia */
+    --accent-orange: #FF7B00;  /* Bright Orange/Amber */
+    --text-light: #EEEEEE; /* Untuk teks utama yang terang */
+    --text-secondary: #CCCCCC; /* Untuk teks paragraf */
+    --text-dark: #1A1A1A; /* Untuk teks di atas elemen terang, jika ada */
+
+    /* Efek Glow (menggunakan RGBA untuk kehalusan) */
+    --glow-teal: 0 0 8px rgba(0, 173, 181, 0.7), 0 0 20px rgba(0, 173, 181, 0.5), 0 0 35px rgba(0, 173, 181, 0.3);
+    --glow-magenta: 0 0 8px rgba(238, 0, 255, 0.7), 0 0 20px rgba(238, 0, 255, 0.5), 0 0 35px rgba(238, 0, 255, 0.3);
+    --glow-orange: 0 0 8px rgba(255, 123, 0, 0.7), 0 0 20px rgba(255, 123, 0, 0.5), 0 0 35px rgba(255, 123, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Sesuaikan dengan tinggi header fixed Anda */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* background-color: var(--bg-dark); <--- Hapus atau komentari ini */
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Hapus juga background-image, background-repeat, dll. jika ada dari percobaan sebelumnya */
+}
+
+/* ---- Full Screen Video Background Styling ---- */
+#full-screen-video-bg {
+    position: fixed; /* Membuat video tetap di viewport saat scroll */
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Posisikan video di lapisan paling belakang */
+    object-fit: cover; /* Memastikan video mengisi seluruh area tanpa distorsi */
+    filter: brightness(0.5) contrast(1.2); /* Gelapkan dan tingkatkan kontras video */
+    opacity: 0.4; /* Buat video transparan agar teks mudah dibaca */
+}
+
+/* ---- Content Wrapper (semua konten selain video) ---- */
+.content-wrapper {
+    position: relative; /* Penting agar elemen anak bisa di atas video */
+    z-index: 1; /* Pastikan konten utama berada di atas video */
+    background-color: rgba(26, 26, 46, 0.3); /* Lapisan overlay semi-transparan untuk konten */
+    /* Anda bisa menyesuaikan warna dan opacity ini untuk efek yang diinginkan */
+    /* Ini penting untuk menjaga kontras teks di atas video */
+    min-height: 100vh; /* Pastikan wrapper ini setidaknya setinggi viewport */
+}
+
+/* ---- Header & Navigation (tetap sama) ---- */
+header {
+    background-color: rgba(26, 26, 46, 0.8); /* Tetap dengan background semi-transparan */
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 173, 181, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Untuk scroll navigasi yang halus */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Menggunakan Poppins untuk teks utama */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Mencegah overflow horizontal dari animasi */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0; /* Padding vertikal untuk setiap section */
+    position: relative; /* Penting untuk efek parallax atau elemen absolut di dalamnya */
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Rajdhani', sans-serif; /* Menggunakan Rajdhani untuk judul */
+    color: var(--accent-teal); /* Warna judul default */
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: var(--glow-teal); /* Default glow untuk judul */
+}
+
+h1 {
+    font-size: 3.5em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: var(--text-secondary); /* Paragraf pakai warna sekunder */
+}
+
+.neon-text {
+    color: var(--accent-teal);
+    text-shadow: var(--glow-teal);
+}
+
+.neon-name {
+    color: var(--accent-magenta); /* Nama lebih menonjol dengan magenta */
+    text-shadow: var(--glow-magenta);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Rajdhani', sans-serif; /* Font tombol juga Rajdhani */
+}
+
+.primary-btn {
+    background: transparent;
+    color: var(--accent-teal);
+    border: 2px solid var(--accent-teal);
+    box-shadow: var(--glow-teal);
+}
+
+.primary-btn:hover {
+    background: var(--accent-teal);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--accent-teal);
+    transform: scale(1.05);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--accent-orange); /* Tombol sekunder dengan warna oranye */
+    border: 2px solid var(--accent-orange);
+    box-shadow: var(--glow-orange);
+    margin-left: 20px;
+}
+
+.secondary-btn:hover {
+    background: var(--accent-orange);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--accent-orange);
+    transform: scale(1.05);
+}
+
+
+/* Header & Navigation */
+header {
+    background-color: rgba(26, 26, 46, 0.8); /* Sesuaikan dengan var(--bg-dark) */
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 173, 181, 0.2); /* Garis bawah teal tipis */
+    backdrop-filter: blur(5px); /* Efek blur untuk latar belakang */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: 'Rajdhani', sans-serif; /* Logo pakai Rajdhani */
+    font-size: 1.8em;
+    color: var(--accent-magenta); /* Warna logo magenta */
+    text-shadow: var(--glow-magenta);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 40px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-teal); /* Underline teal */
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+    box-shadow: var(--glow-teal);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-teal);
+    text-shadow: 0 0 8px var(--accent-teal);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Penting untuk animasi latar belakang jika ada */
+    padding-top: 100px; /* Offset dari fixed header */
+}
+
+.hero-content {
+    z-index: 2; /* Pastikan konten di atas efek latar belakang */
+    position: relative; /* Untuk positioning teks neon animasi */
+}
+
+.hero-content h1 {
+    font-size: 5em; /* Lebih besar untuk hero */
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    color: var(--text-secondary); /* Perkenalan pakai warna sekunder */
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Jarak antar tombol */
+}
+
+/* About Section */
+.about-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* Agar bisa wrap di mobile */
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.bio-text {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.skills-list {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    background-color: rgba(0, 173, 181, 0.05); /* Latar belakang semi-transparan teal */
+    border: 1px solid rgba(0, 173, 181, 0.2);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 173, 181, 0.3); /* Sedikit glow teal */
+}
+
+.skills-list h3 {
+    text-align: left;
+    margin-bottom: 15px;
+    color: var(--accent-teal);
+    text-shadow: var(--glow-teal);
+}
+
+.skills-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-chip {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--accent-magenta); /* Border magenta */
+    color: var(--accent-magenta);
+    padding: 8px 15px;
+    margin: 8px 5px;
+    display: inline-block;
+    border-radius: 20px;
+    font-size: 0.9em;
+    text-shadow: 0 0 5px var(--accent-magenta);
+    transition: all 0.3s ease;
+}
+
+.skill-chip:hover {
+    background-color: var(--accent-magenta);
+    color: var(--bg-dark);
+    box-shadow: var(--glow-magenta);
+    transform: translateY(-3px);
+}
+
+
+/* Projects Section */
+.projects-section .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.project-card {
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang gelap transparan */
+    border: 1px solid rgba(238, 0, 255, 0.3); /* Border pink magenta */
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(238, 0, 255, 0.2); /* Sedikit glow magenta */
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px var(--accent-magenta); /* Glow lebih kuat saat hover */
+    border-color: var(--accent-magenta);
+}
+
+.project-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 173, 181, 0.3); /* Border teal */
+    transition: border-color 0.3s ease;
+}
+
+.project-card:hover img {
+    border-color: var(--accent-teal);
+}
+
+.project-card h3 {
+    color: var(--accent-teal);
+    text-shadow: var(--glow-teal);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.project-card p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: var(--text-secondary); /* Paragraf pakai warna sekunder */
+}
+
+.project-btn {
+    background: transparent;
+    color: var(--accent-orange); /* Tombol proyek dengan oranye */
+    border: 1px solid var(--accent-orange);
+    text-shadow: 0 0 5px var(--accent-orange);
+    box-shadow: 0 0 10px rgba(255, 123, 0, 0.4);
+    padding: 10px 20px;
+    font-size: 0.9em;
+}
+
+.project-btn:hover {
+    background: var(--accent-orange);
+    color: var(--bg-dark);
+    box-shadow: var(--glow-orange);
+}
+
+
+/* Contact Section */
+.contact-section {
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    gap: 20px;
+    background-color: rgba(26, 26, 46, 0.7); /* Latar belakang form, sesuai bg-dark */
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 173, 181, 0.2); /* Border teal */
+    box-shadow: 0 0 20px rgba(0, 173, 181, 0.3); /* Glow teal */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--text-light);
+    border-radius: 5px;
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif; /* Input font Poppins */
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 10px var(--accent-teal);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    align-self: center; /* Untuk menempatkan tombol di tengah */
+    background: transparent;
+    color: var(--accent-teal); /* Tombol submit dengan teal */
+    border: 2px solid var(--accent-teal);
+    box-shadow: var(--glow-teal);
+    font-size: 1.1em;
+    padding: 15px 40px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: var(--accent-teal);
+    color: var(--bg-dark);
+    box-shadow: 0 0 25px var(--accent-teal);
+    transform: scale(1.05);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.social-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); /* Sedikit shadow default */
+    transition: filter 0.3s ease;
+}
+
+.social-icon span {
+    font-size: 0.9em;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover img {
+    filter: drop-shadow(0 0 15px var(--accent-magenta)); /* Glow magenta saat hover */
+}
+
+.social-icon:hover span {
+    color: var(--accent-magenta);
+    text-shadow: 0 0 8px var(--accent-magenta);
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-dark);
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid rgba(0, 173, 181, 0.1); /* Border atas teal redup */
+    font-size: 0.9em;
+}
+
+footer p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap; /* Agar item navigasi bisa wrap */
+        justify-content: center;
+    }
+
+    .nav-links li {
+        margin: 0 15px 10px 15px; /* Jarak antar item navigasi di mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 3.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .secondary-btn {
+        margin-left: 0; /* Hilangkan margin di mobile */
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .bio-text, .skills-list {
+        max-width: 100%; /* Lebarkan di mobile */
+    }
+
+    .skills-list {
+        padding: 20px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr; /* Satu kolom di mobile */
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    section {
+        padding: 80px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .nav-links a {
+        font-size: 1em;
+    }
+}
+
+/* AOS Animations (pastikan sudah ada AOS.js di HTML) */
+/* AOS akan secara otomatis menambahkan class, jadi kita hanya perlu memastikan gaya dasar elemen cocok */

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizki Cahya Putra- Cyberpunk Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+     <video autoplay muted loop id="full-screen-video-bg">
+        <source src="/videos/Background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header id="home">
+    <nav class="navbar">
+        <div class="logo">Portofolio</div> <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#pengalaman">Pengalaman</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <section id="hero" class="hero-section">
+    <div class="hero-content">
+        <h1 class="neon-text" data-aos="fade-up" data-aos-duration="1000">
+            Halo, saya <span class="neon-name"></span> </h1>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">Informatic System</p>
+        <div class="cta-buttons" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+            <a href="#kontak" class="btn secondary-btn">Hubungi Saya</a>
+        </div>
+        </div>
+    </div>
+</section>
+
+    <section id="tentang" class="about-section">
+        <div class="container">
+            <h2 class="section-title neon-text" data-aos="fade-up">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="bio-text" data-aos="fade-right" data-aos-duration="1000">
+                    <p>Saya Rizki Cahya Putra, mahasiswa aktif berusia 20 tahun dari Program Studi Sistem Informasi Universitas Negeri Semarang. Lulusan Madrasah Aliyah Nahdlatul Ulama Taswiquth Thullab Salafiyah Kudus, saya tumbuh dalam lingkungan disiplin yang membentuk karakter saya menjadi pribadi yang bertanggung jawab, tekun, dan berintegritas. Pengalaman akademik dan organisasi telah memperkuat kemampuan saya dalam bekerja sama dalam tim, berpikir kritis, serta berkomunikasi secara efektif. Saya memiliki minat besar dalam pengembangan teknologi informasi dan siap memberikan kontribusi terbaik dalam lingkungan kerja yang dinamis. Dengan kombinasi soft skill yang kuat dan semangat belajar yang tinggi, saya percaya dapat menjadi bagian berharga dalam setiap tim dan proyek yang saya ikuti.</p>
+                </div>
+                <div class="skills-list" data-aos="fade-left" data-aos-duration="1000">
+                    <h3>Keahlian Utama:</h3>
+                    <ul>
+                        <li class="skill-chip">Web Development (HTML, CSS, JavaScript)</li>
+                        <li class="skill-chip">UI/UX Design (Figma)</li>
+                        <li class="skill-chip">Database (SQL)</li>
+                        <li class="skill-chip">Basic AI/ML Concepts</li>
+                        <li class="skill-chip">Problem Solving & Logic</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pengalaman" class="projects-section">
+    <div class="container">
+        <h2 class="section-title neon-text" data-aos="fade-up">Pengalaman</h2>
+        <div class="project-grid">
+
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="images/LOGO UNNES.jpg" alt="Logo UNNES"> <h3>Sistem Informasi</h3>
+                <p>Pengembangan Rancangan Perangkat Lunak</p>
+                <a href="https://drive.google.com/drive/folders/1UkuY3h-uO2mzwG69V4CdaBpqLnRLU1Hd?usp=drive_link" target="_blank" class="btn project-btn">Lihat Detail</a>
+            </div>
+
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="images/UX.jpeg" alt="Icon UI/UX"> <h3>Desain UI/UX Mobile App</h3>
+                <p>Merancang antarmuka pengguna interaktif </p>
+                <a href="https://drive.google.com/drive/folders/1CJW75AcxT8TDCaZgKNrvF8Br2DYlCzBU?usp=sharing" target="_blank" class="btn project-btn">Lihat Detail</a>
+            </div>
+
+            <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
+                <img src="images/Me.jpg" alt="Tampilan Website Portofolio Pribadi"> <h3>Website Portofolio Pribadi</h3>
+                <p>Website ini sendiri merupakan salah satu kemampuan front-end saya.</p>
+                <a href="https://drive.google.com/file/d/1jeczOlCqLmQOk1NmLxg3XHeEsO2rtKSH/view?usp=sharing" target="_blank" class="btn project-btn">Lihat Detail </a>
+            </div>
+
+            </div>
+    </div>
+</section>
+
+    <section id="kontak" class="contact-section">
+        <div class="container">
+            <h2 class="section-title neon-text" data-aos="fade-up">Hubungi Saya</h2>
+            <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
+                <input type="text" placeholder="Nama Anda" required>
+                <input type="email" placeholder="Email Anda" required>
+                <textarea placeholder="Pesan Anda" rows="5" required></textarea>
+                <button type="submit" class="btn submit-btn">Kirim Pesan</button>
+            </form>
+            <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://github.com/rizkichy19" target="_blank" class="social-icon">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/github.png" alt="GitHub">
+                    <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/rizkicahyaputra19" target="_blank" class="social-icon">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="LinkedIn">
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://instagram.com/rizkichy_" target="_blank" class="social-icon">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram">
+                    <span>Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Putra. All rights reserved.</p>
+            <p>Dibuat oleh Putra Project</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
